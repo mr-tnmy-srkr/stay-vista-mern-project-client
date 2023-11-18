@@ -5,7 +5,7 @@ import axiosSecure from ".";
 export const saveUser = async (user) => {
   const currentUser = {
     email: user.email,
-    role: "guest",
+    role: "admin",
     status: "Verified",
   };
   const { data } = await axiosSecure.put(`/users/${user?.email}`, currentUser);
@@ -15,7 +15,7 @@ export const saveUser = async (user) => {
 
 // Get token from server
 export const getToken = async (email) => {
-  const { data } = await axiosSecure.post(`/jwt`, email);
+  const { data } = await axiosSecure.post(`/jwt`, {email});
   console.log("Token received from server------>", data);
   return data;
 };

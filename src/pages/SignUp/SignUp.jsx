@@ -4,7 +4,9 @@ import axios from "axios";
 import { imageUpload } from "../../api/utils";
 import useAuth from "../../hooks/useAuth";
 import { toast } from 'react-hot-toast'
-import { saveUser } from "../../api/auth";
+import { getToken, saveUser } from "../../api/auth";
+import {TbFidgetSpinner} from "react-icons/tb"
+import SocialSignIn from "../../components/SocialSignIn/SocialSignIn";
 
 const SignUp = () => {
    const { createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
@@ -54,8 +56,8 @@ const SignUp = () => {
       // result.user.email
 
       //5. get token
-     /*  await getToken(result?.user?.email);
-      navigate("/"); */
+      await getToken(result?.user?.email);
+      navigate("/");
       toast.success("Signup Successful");
     } catch (err) {
       console.log(err);
@@ -63,6 +65,7 @@ const SignUp = () => {
     }
   };
 
+ 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -135,11 +138,15 @@ const SignUp = () => {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="bg-rose-500 w-full rounded-md py-3 text-white"
+          <button
+              type='submit'
+              className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-              Continue
+              {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Continue'
+              )}
             </button>
           </div>
         </form>
@@ -150,11 +157,8 @@ const SignUp = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
-          <FcGoogle size={32} />
-
-          <p>Continue with Google</p>
-        </div>
+        {/* social sign in */}
+        <SocialSignIn/>
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account?{" "}
           <Link
