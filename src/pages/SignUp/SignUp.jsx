@@ -4,6 +4,7 @@ import axios from "axios";
 import { imageUpload } from "../../api/utils";
 import useAuth from "../../hooks/useAuth";
 import { toast } from 'react-hot-toast'
+import { saveUser } from "../../api/auth";
 
 const SignUp = () => {
    const { createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
@@ -48,8 +49,8 @@ const SignUp = () => {
       console.log(result);
 
       //4. save user data in database
-    /*   const dbResponse = await saveUser(result?.user);
-      console.log(dbResponse); */
+     const dbResponse = await saveUser(result?.user);
+      console.log(dbResponse); 
       // result.user.email
 
       //5. get token
