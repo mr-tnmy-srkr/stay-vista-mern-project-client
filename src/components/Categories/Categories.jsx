@@ -11,7 +11,7 @@ console.log(category);
 
   return (
     <Container>
-      <div className="flex items-center justify-center gap-4 overflow-x-auto py-4 mb-6">
+      <div className="flex gap-4 overflow-x-auto py-4 mb-6">
         {categories.map((item, idx) => (
           <CategoryBox
             key={idx}
