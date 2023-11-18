@@ -1,5 +1,4 @@
-import { useSearchParams } from "react-router-dom";
-import Categories from "../../components/Rooms/Categories/Categories";
+import Categories from "../../components/Categories/Categories";
 import Rooms from "../../components/Rooms/Rooms";
 
 const Home = () => {
