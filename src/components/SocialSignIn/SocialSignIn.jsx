@@ -12,6 +12,7 @@ const SocialSignIn = () => {
     const from = location?.state?.from?.pathname || '/'
      // Handle Social SignIn
   const handleSocialSignIn = async (media) => {
+      const toastId = toast.loading("Signing in ...");
     try {
       //2. User Registration using google
       const result = await media()
@@ -23,10 +24,10 @@ const SocialSignIn = () => {
       //5. get token
       await getToken(result?.user?.email)
       navigate(from, { replace: true })
-      toast.success('Login Successful')
+      toast.success('Login Successful', { id: toastId })
     } catch (err) {
       console.log(err)
-      toast.error(err?.message)
+      toast.error(err?.message, { id: toastId })
     }
   }
   return (

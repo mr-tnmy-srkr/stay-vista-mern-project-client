@@ -24,7 +24,7 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
   };
 
   params.get("category")
-  console.log(params);
+  // console.log(params);
 
   return (
     <div

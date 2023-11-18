@@ -7,13 +7,27 @@ import { toast } from 'react-hot-toast'
 import { getToken, saveUser } from "../../api/auth";
 import {TbFidgetSpinner} from "react-icons/tb"
 import SocialSignIn from "../../components/SocialSignIn/SocialSignIn";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SignUp = () => {
-   const { createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
+   const { user,createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    const invalidLink = location.pathname.includes("signup");
+    // console.log(location);
+    if (user) {
+      invalidLink && navigate(from, { replace: true });
+    }
+  }, [user]);
+
   // form submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const toastId = toast.loading("Creating user ...");
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -58,10 +72,10 @@ const SignUp = () => {
       //5. get token
       await getToken(result?.user?.email);
       navigate("/");
-      toast.success("Signup Successful");
+      toast.success("Signup Successful", { id: toastId });
     } catch (err) {
       console.log(err);
-      toast.error(err?.message);
+      toast.error(err?.message, { id: toastId });
     }
   };
 
