@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Container from "../../components/Shared/Container";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Loader from "../../components/Shared/Loader";
 import { Helmet } from "react-helmet-async";
 import Header from "../../components/RoomDetails/Header";
 import RoomInfo from "../../components/RoomDetails/RoomInfo";
-import Calender from "../../components/RoomDetails/Calender";
 import RoomReservation from "../../components/RoomDetails/RoomReservation";
 
 const RoomDetails = () => {
   const { id } = useParams();
-  const [room, setRoom] = useState({});
+const room = useLoaderData()
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+/*   useEffect(() => {
     setLoading(true);
     fetch("/rooms.json")
       .then((res) => res.json())
@@ -22,7 +21,7 @@ const RoomDetails = () => {
         setRoom(singleRoom);
         setLoading(false);
       });
-  }, [id]);
+  }, [id]); */
 
   if (loading) return <Loader />;
   return (
