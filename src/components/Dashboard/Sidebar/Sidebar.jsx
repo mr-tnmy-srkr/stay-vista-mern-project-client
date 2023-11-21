@@ -14,9 +14,10 @@ import { MdHomeWork } from "react-icons/md";
 import MenuItem from './MenuItem'
 import useAuth from '../../../hooks/useAuth'
 import useRole from '../../../hooks/useRole'
-// import HostMenu from './HostMenu'
-// import GuestMenu from './GuestMenu'
-// import AdminMenu from './AdminMenu'
+import HostMenu from './HostMenu'
+import GuestMenu from './GuestMenu'
+import AdminMenu from './AdminMenu'
+
 
 const Sidebar = () => {
   const { logOut } = useAuth()
@@ -66,8 +67,8 @@ console.log(role);
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* If a user is host */}
-            {/* {role === 'host' && <ToggleBtn toggleHandler={toggleHandler} />} */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+            {role === 'host' && <ToggleBtn toggleHandler={toggleHandler} />}
+  
             <nav>
               <MenuItem
                 icon={BsGraphUp}
@@ -76,20 +77,11 @@ console.log(role);
               />
 
               {/* Host Menu Items */}
-              {/* {role === 'guest' && <GuestMenu />}
+              {role === 'guest' && <GuestMenu />}
               {role === 'host' ? toggle ? <HostMenu /> : <GuestMenu /> : ''}
-              {role === 'admin' && <AdminMenu />} */}
+              {role === 'admin' && <AdminMenu />}
 
-              <MenuItem
-                icon={BsFillHouseAddFill}
-                label='Add Room'
-                address='add-room'
-              />
-              <MenuItem
-                icon={MdHomeWork}
-                label='My Listings'
-                address='my-listings'
-              />
+       
             </nav>
           </div>
         </div>
