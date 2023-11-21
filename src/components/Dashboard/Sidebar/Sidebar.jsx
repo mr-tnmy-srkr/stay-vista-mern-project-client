@@ -13,7 +13,7 @@ import { MdHomeWork } from "react-icons/md";
 
 import MenuItem from './MenuItem'
 import useAuth from '../../../hooks/useAuth'
-// import useRole from '../../../hooks/useRole'
+import useRole from '../../../hooks/useRole'
 // import HostMenu from './HostMenu'
 // import GuestMenu from './GuestMenu'
 // import AdminMenu from './AdminMenu'
@@ -22,8 +22,8 @@ const Sidebar = () => {
   const { logOut } = useAuth()
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
-//   const [role] = useRole()
-
+  const [role] = useRole()
+console.log(role);
   //   For guest/host menu item toggle button
   const toggleHandler = event => {
     setToggle(event.target.checked)
