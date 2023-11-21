@@ -3,13 +3,13 @@ import MenuItem from "./MenuItem";
 
 const GuestMenu = () => {
   return (
-    <dv>
+    <div>
       <MenuItem
         icon={BsFingerprint}
         label="My Bookings"
         address="my-bookings"
       />
-    </dv>
+    </div>
   );
 };
 
