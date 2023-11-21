@@ -39,7 +39,7 @@ const Card = ({ room }) => {
           5 nights .{/* {room.} */}
         </div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">$ 200</div>
+          <div className="font-semibold">$ {room?.price}</div>
           <div className="font-light">night</div>
         </div>
       </div>
