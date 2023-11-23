@@ -75,6 +75,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
     }
 
     console.log('payment intent', paymentIntent)
+    console.log(bookingInfo);
 
     if (paymentIntent.status === 'succeeded') {
       const paymentInfo = {
@@ -82,7 +83,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
         transactionId: paymentIntent.id,
         date: new Date(),
       }
-      try {
+     try {
         // save payment information to the server
         await saveBookingInfo(paymentInfo)
 
