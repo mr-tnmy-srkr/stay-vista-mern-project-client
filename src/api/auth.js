@@ -15,7 +15,7 @@ export const saveUser = async (user) => {
 
 // Get token from server
 export const getToken = async (email) => {
-  const { data } = await axiosSecure.post(`/jwt`, {email});
+  const { data } = await axiosSecure.post(`/jwt`, { email });
   console.log("Token received from server------>", data);
   return data;
 };
@@ -27,7 +27,13 @@ export const clearCookie = async () => {
 };
 
 // Get user role
-export const getRole = async email => {
-  const { data } = await axiosSecure(`/user/${email}`)
-  return data.role
-}
+export const getRole = async (email) => {
+  const { data } = await axiosSecure(`/user/${email}`);
+  return data.role;
+};
+
+// get all users
+export const getAllUsers = async () => {
+  const { data } = await axiosSecure("/users");
+  return data;
+};
