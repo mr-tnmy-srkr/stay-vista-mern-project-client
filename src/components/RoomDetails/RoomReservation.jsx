@@ -55,8 +55,11 @@ const RoomReservation = ({ room }) => {
         <Calender value={value} />
       </div>
       <hr />
+    
       <div onClick={() => setIsOpen(true)} className="p-4">
-        <Button label={"Reserve"} />
+        <Button
+          disabled={room.host.email === user.email || room.booked}
+         label={"Reserve"} />
       </div>
       <hr />
       <div className="p-4 flex items-center justify-between font-semibold text-lg">
