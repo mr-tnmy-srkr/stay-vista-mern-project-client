@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import Profile from "../pages/Dashboard/Common/Profile";
 import MyBookings from "../pages/Dashboard/Guest/MyBookings";
 import ManageBookings from "../pages/Dashboard/Host/ManageBookings";
+import AdminStatistics from "../components/Dashboard/Statistics/AdminStatistics";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +101,16 @@ export const router = createBrowserRouter([
           <HostRoute>
             <ManageBookings />
           </HostRoute>
+        ),
+      },
+      {
+       index:true,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AdminStatistics/>
+            </AdminRoute>
+          </PrivateRoute>
         ),
       },
     ],
