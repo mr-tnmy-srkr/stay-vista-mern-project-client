@@ -5,3 +5,12 @@
 
 - pdf
 [doc.pdf](https://github.com/mr-tnmy-srkr/stay-vista-mern-project-client/files/13339992/doc.pdf)
+
+
+
+
+admin : srkr.tnmy@gmail.com (ugent,user will be shown in admin dashboard)
+
+live link 1 : https://stay-vista-mern-project-ae9a6.web.app/
+
+live link 2 : https://stay-vista-mern-project.surge.sh
